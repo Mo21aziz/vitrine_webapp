@@ -1,12 +1,61 @@
-# Di Napoli — site vitrine
+# dinapoli_vitrine
 
-| Part | Tech | Hosted on |
+Showcase website for the Di Napoli restaurants, with a private admin dashboard.
+Web application built with React (frontend), Express (backend API) and MySQL (database), all in TypeScript.
+
+## Tech stack
+
+| Layer | Technology | Hosted on |
 |---|---|---|
-| `front/` | React 19 + Vite + React Router + Leaflet | Vercel |
-| `backend/` | Express 5 + Prisma 7 (MySQL) | Render |
-| Database | MySQL | Railway |
+| Frontend | React 19 + TypeScript, Vite, React Router, Leaflet (OpenStreetMap) | Vercel |
+| Backend | Node.js, Express 5, TypeScript, Prisma 7, `tsx` (dev) | Render |
+| Database | MySQL 8, accessed with Prisma (MariaDB driver adapter) | Railway |
 
-Uploaded photos are stored in the database (`Image` table), so they survive Render redeploys.
+## Architecture overview
+
+```
+Browser (React, port 5173)
+   |  HTTP / JSON  (/api/...)   +  photos (/uploads/...)
+   v
+Express API (port 3000)
+   |  SQL via Prisma
+   v
+MySQL
+```
+
+The frontend and the backend are two independent applications. They communicate only through a JSON API,
+so either side can be replaced or changed without touching the other.
+During development, the Vite dev server proxies every `/api` and `/uploads` request to the Express server,
+which avoids CORS issues. Uploaded photos are stored in the database (`Image` table), so they survive
+redeploys on hosts with an ephemeral disk.
+
+## Project structure
+
+```
+dinapoli_vitrine/
+├── front/                 React application
+│   └── src/
+│       ├── api/           API calls (the only place that uses fetch)
+│       ├── components/    Reusable UI pieces (ui/, home/, dashboard/, layout/, map/)
+│       ├── pages/         One component per screen (public + admin/)
+│       ├── context/       Admin authentication
+│       ├── hooks/         Reusable logic
+│       ├── types/         TypeScript types for API data
+│       ├── utils/         Formatting, map helpers
+│       └── App.tsx        Router setup
+│
+└── backend/               Express API
+    ├── prisma/            schema.prisma, migrations/, seed.ts
+    └── src/
+        ├── index.ts       Creates and starts the Express app
+        ├── config/        Environment variables, Prisma client
+        ├── routes/        URL -> controller mapping (public + /admin)
+        ├── controllers/   Read the request, call a service, send the response
+        ├── services/      Business logic (rules, calculations)
+        ├── repositories/  Database queries, nothing else
+        ├── middleware/    Error handling, authentication, uploads
+        └── types/         Validation schemas (zod) and shared types
+```
 
 ## Run locally
 
@@ -22,7 +71,7 @@ npm run dev                  # http://localhost:3000
 # front (other terminal)
 cd front
 npm install
-npm run dev                  # http://localhost:5173 (proxies /api and /uploads to :3000)
+npm run dev                  # http://localhost:5173
 ```
 
 Admin: `/admin/login` (not linked from the site).
