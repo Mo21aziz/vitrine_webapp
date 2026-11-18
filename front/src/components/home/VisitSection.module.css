@@ -1,0 +1,211 @@
+.section {
+  padding-block: clamp(80px, 11vw, 140px);
+  background: var(--red);
+  color: var(--cream);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(36px, 6vw, 80px);
+  align-items: start;
+}
+
+.locations {
+  scroll-margin-top: 100px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* White address cards with green text */
+.place {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 22px;
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--green);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s var(--ease);
+}
+
+.place:hover {
+  transform: translateX(6px);
+}
+
+.open .place {
+  box-shadow:
+    inset 4px 0 0 var(--green),
+    var(--shadow-card);
+  transform: none;
+}
+
+/* ---------- slide-down map ---------- */
+.drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.5s var(--ease),
+    opacity 0.35s var(--ease);
+}
+
+.open .drawer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.drawerInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.drawerInner > * {
+  margin-top: 10px;
+  transform: translateY(-12px);
+  transition: transform 0.5s var(--ease);
+}
+
+.open .drawerInner > * {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .drawerInner > * {
+    transition: none;
+  }
+}
+
+.placeIndex {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--red);
+}
+
+.placeBody {
+  min-width: 0;
+}
+
+.place h3 {
+  font-size: 1.5rem;
+}
+
+/* inline (not flex) so the arrow stays glued to the last word of long addresses */
+.address {
+  display: inline;
+  margin-top: 2px;
+  line-height: 1.6;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--green-3);
+  text-decoration: underline;
+  text-decoration-color: rgba(60, 109, 79, 0.35);
+  text-underline-offset: 4px;
+  transition:
+    color 0.2s var(--ease),
+    text-decoration-color 0.2s var(--ease);
+}
+
+.address:hover {
+  color: var(--red);
+  text-decoration-color: currentColor;
+}
+
+.address svg {
+  display: inline;
+  margin-left: 5px;
+  vertical-align: -1px;
+}
+
+.noAddress {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.pin {
+  color: var(--red);
+}
+
+.locate {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(184, 40, 31, 0.1);
+  color: var(--red);
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.locate:hover,
+.locate[aria-expanded='true'] {
+  background: var(--red);
+  color: var(--cream);
+}
+
+.locate[aria-expanded='true'] svg {
+  transform: translateY(2px);
+}
+
+.locate svg {
+  transition: transform 0.3s var(--ease);
+}
+
+.locate:active {
+  transform: scale(0.94);
+}
+
+.mapFallback {
+  height: clamp(260px, 32vw, 340px);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 248, 238, 0.14);
+}
+
+.placeholder {
+  padding-block: 22px;
+  opacity: 0.7;
+}
+
+/* Contact card — green on red */
+.card {
+  scroll-margin-top: 100px;
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: var(--radius-xl);
+  background: var(--green);
+  box-shadow: var(--shadow-card);
+}
+
+.card :global(.eyebrow) {
+  color: var(--basil);
+}
+
+.cardTitle {
+  margin-top: 12px;
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-weight: 350;
+}
+
+.cardIntro {
+  margin: 14px 0 28px;
+  color: rgba(255, 248, 238, 0.75);
+}
+
+@media (max-width: 920px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,59 @@
+.heading {
+  display: grid;
+  gap: 20px 48px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+.split {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: end;
+}
+
+.left {
+  grid-template-columns: 1fr;
+}
+
+.heading .eyebrow,
+.heading > div > p {
+  opacity: 0.8;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 350;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--peach);
+}
+
+.intro {
+  max-width: 30rem;
+  opacity: 0.85;
+}
+
+.onLight {
+  color: var(--green);
+}
+
+.onLight > div > p {
+  color: var(--red);
+  opacity: 1;
+}
+
+.onLight .title em {
+  color: var(--red);
+}
+
+.onLight .intro {
+  color: var(--green-2);
+}
+
+@media (max-width: 760px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}

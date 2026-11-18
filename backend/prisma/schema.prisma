@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Article {
+  id          Int      @id @default(autoincrement())
+  nom         String
+  prix        Decimal  @db.Decimal(10, 3) // TND uses 3 decimals (millimes)
+  composition String   @db.Text
+  remise      Int      @default(0) // percentage, 0 to 100
+  menuId      Int?
+  menu        Menu?    @relation(fields: [menuId], references: [id])
+  imageUrl    String? // e.g. /uploads/3f2a….jpg
+  avis        Avis[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// A section of "La carte" (Pizzas, Pâtes, Desserts…) grouping articles
+model Menu {
+  id          Int       @id @default(autoincrement())
+  nom         String    @unique
+  description String?   @db.Text
+  imageUrl    String?
+  articles    Article[]
+  createdAt   DateTime  @default(now())
+}
+
+model PointDeVente {
+  id           Int           @id @default(autoincrement())
+  nom          String        @unique
+  adresse      String?
+  latitude     Float? // picked on the map in the admin
+  longitude    Float?
+  reclamations Reclamation[]
+}
+
+enum StatutReclamation {
+  NOUVELLE
+  EN_COURS
+  TRAITEE
+}
+
+model Reclamation {
+  id             Int               @id @default(autoincrement())
+  nom            String?
+  prenom         String?
+  telephone      String?
+  email          String // required
+  message        String            @db.Text
+  statut         StatutReclamation @default(NOUVELLE)
+  pointDeVenteId Int
+  pointDeVente   PointDeVente      @relation(fields: [pointDeVenteId], references: [id])
+  createdAt      DateTime          @default(now())
+}
+
+// Customer review of a dish. Hidden until the admin publishes it.
+model Avis {
+  id          Int      @id @default(autoincrement())
+  articleId   Int
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  nom         String
+  note        Int // 1 to 5 stars
+  commentaire String   @db.Text
+  publie      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([articleId, publie])
+}
+
+// Photos uploaded from the admin, served at /uploads/<id>. Stored in the database so they
+// survive redeploys on hosts with an ephemeral disk (Render free plan).
+model Image {
+  id        String   @id @db.VarChar(64) // "<uuid>.<ext>"
+  mimeType  String   @db.VarChar(32)
+  size      Int
+  data      Bytes    @db.LongBlob
+  createdAt DateTime @default(now())
+}

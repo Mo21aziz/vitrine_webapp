@@ -1,0 +1,15 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+# Generated Prisma client (rebuilt with `npx prisma generate`)
+/src/generated/prisma
+
+# AI-assistant skill folders installed by Prisma's agent skills (not project code)
+/.agents
+/.claude
+/.windsurf
+skills-lock.json
+
+# Photos uploaded from the admin (user content, not source code)
+/uploads

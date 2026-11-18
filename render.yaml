@@ -1,0 +1,27 @@
+# Render Blueprint — backend API (Express + Prisma) connected to Railway MySQL.
+# Render dashboard → New → Blueprint → pick this repo. Secrets marked `sync: false` are asked for at creation.
+services:
+  - type: web
+    name: dinapoli-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci --include=dev && npm run build
+    # applies new migrations, ensures the admin account exists, then starts the API
+    startCommand: npm run start:prod
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22.12.0"
+      - key: DATABASE_URL
+        sync: false # Railway PUBLIC url: mysql://root:…@xxxx.proxy.rlwy.net:PORT/railway
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false # your Vercel address, e.g. https://dinapoli.vercel.app
+      - key: GEOCODE_COUNTRY
+        value: tn

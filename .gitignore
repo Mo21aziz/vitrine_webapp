@@ -24,7 +24,3 @@ Thumbs.db
 # Misc
 coverage/
 *.tsbuildinfo
-package-lock.json
-package.json
-vite.config.ts
-tsconfig.json

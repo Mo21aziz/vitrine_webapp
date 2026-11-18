@@ -1,0 +1,214 @@
+.section {
+  padding-block: clamp(80px, 11vw, 140px);
+  background: var(--green);
+  color: var(--cream);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: center;
+}
+
+.figure {
+  position: relative;
+  margin: 0;
+}
+
+.figure img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.figure figcaption {
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--red);
+  font-family: var(--font-display);
+  font-style: italic;
+  white-space: nowrap;
+  box-shadow: var(--shadow-soft);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.copy :global(.eyebrow) {
+  color: var(--basil);
+}
+
+.title {
+  font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+  font-weight: 350;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--basil);
+}
+
+.text {
+  max-width: 34rem;
+  color: rgba(255, 248, 238, 0.8);
+  font-size: 1.05rem;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pillars li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: rgba(255, 248, 238, 0.06);
+  border: 1px solid rgba(255, 248, 238, 0.1);
+}
+
+.pillars strong {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+.pillars span {
+  font-size: 0.85rem;
+  color: rgba(255, 248, 238, 0.7);
+}
+
+/* ---------- Letter from the team (cream paper, gold frame) ---------- */
+.letter {
+  position: relative;
+  max-width: 720px;
+  margin: clamp(80px, 10vw, 130px) auto 0;
+  padding: clamp(44px, 7vw, 76px) clamp(24px, 6vw, 72px) clamp(40px, 6vw, 64px);
+  border-radius: 6px;
+  background:
+    radial-gradient(120% 80% at 50% 0%, #ffffff 0%, transparent 70%),
+    var(--cream);
+  color: #3b3a36;
+  text-align: center;
+  /* thin gold frame + inner hairline, like a printed menu card */
+  box-shadow:
+    0 0 0 3px #c9a24a,
+    0 0 0 9px var(--cream),
+    0 0 0 10px rgba(201, 162, 74, 0.55),
+    0 40px 80px -30px rgba(0, 0, 0, 0.55);
+  transform: rotate(-0.6deg);
+}
+
+.letterHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wordmark {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.wmDi {
+  color: #12924a;
+}
+
+.wmNapoli {
+  color: #d1202f;
+}
+
+.since {
+  position: absolute;
+  right: 0;
+  bottom: -14px;
+  padding: 1px 5px;
+  background: #2d2d2d;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tricolore {
+  display: block;
+  width: min(270px, 70%);
+  height: 6px;
+  margin-top: 20px;
+  background: linear-gradient(90deg, #12924a 0 33.3%, #ffffff 33.3% 66.6%, #d1202f 66.6%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.letterBody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 34rem;
+  margin: clamp(32px, 5vw, 48px) auto 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.1vw, 1.32rem);
+  font-weight: 350;
+  line-height: 1.55;
+}
+
+.signature {
+  margin-top: clamp(28px, 4vw, 40px);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.signature span {
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--green);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .letter {
+    transition: transform 0.6s var(--ease);
+  }
+  .letter:hover {
+    transform: rotate(0deg) translateY(-4px);
+  }
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .figure {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+}

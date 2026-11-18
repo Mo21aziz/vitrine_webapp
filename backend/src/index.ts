@@ -1,22 +1,24 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
-import { pool } from "./db.js";
-dotenv.config();
+import { env } from "./config/env.js";
+import { uploadController } from "./controllers/upload.controller.js";
+import { errorHandler, notFound } from "./middleware/error.middleware.js";
+import { apiRoutes } from "./routes/index.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(cors({ origin: "http://localhost:5173" }));
-app.use(express.json());
+app.disable("x-powered-by");
+app.use(cors({ origin: env.corsOrigins }));
+app.use(express.json({ limit: "100kb" }));
 
-app.get("/api/health", (_req, res) => {
-  res.json({ status: "ok" });
-});
-app.get("/api/db-test", async (_req, res) => {
-  const [rows] = await pool.query("SELECT 1 + 1 AS result");
-  res.json(rows);
-});
-app.listen(PORT, () => {
-  console.log(`API running on http://localhost:${PORT}`);
+app.use("/api", apiRoutes);
+
+// Photos uploaded from the admin (stored in the database)
+app.get("/uploads/:file", uploadController.serve);
+
+app.use(notFound);
+app.use(errorHandler);
+
+app.listen(env.port, () => {
+  console.log(`API running on port ${env.port} — allowed origins: ${env.corsOrigins.join(", ")}`);
 });

@@ -1,0 +1,263 @@
+.hero {
+  --side: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  min-height: min(100svh, 940px);
+  background: var(--red);
+  color: var(--cream);
+  overflow: hidden;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 124px clamp(24px, 4vw, 64px) 72px var(--side);
+}
+
+.copy > * {
+  animation: rise 0.9s var(--ease) both;
+}
+.copy > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+.copy > :nth-child(3) {
+  animation-delay: 0.16s;
+}
+.copy > :nth-child(4) {
+  animation-delay: 0.24s;
+}
+.copy > :nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.eyebrow {
+  color: rgba(255, 248, 238, 0.85);
+}
+
+.title {
+  font-size: clamp(3rem, 5.6vw, 5.6rem);
+  font-weight: 350;
+  line-height: 0.98;
+  font-variation-settings: 'opsz' 144;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--peach);
+}
+
+.lead {
+  max-width: 34rem;
+  font-size: 1.05rem;
+  color: rgba(255, 248, 238, 0.86);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 30px;
+}
+
+.facts {
+  display: flex;
+  gap: clamp(20px, 3vw, 44px);
+  margin: 8px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 248, 238, 0.22);
+}
+
+.facts div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.facts dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 238, 0.7);
+}
+
+.facts dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  line-height: 1.1;
+}
+
+/* ---------- Image side ---------- */
+.media {
+  position: relative;
+  margin-top: 80px; /* height of the white header */
+  border-top-left-radius: var(--radius-xl);
+  overflow: hidden;
+  animation: reveal 1.2s var(--ease) both;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 50%;
+  transform: scale(1.04);
+  animation: settle 2.4s var(--ease) both;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(20, 42, 29, 0.55), transparent 30%),
+    linear-gradient(to right, rgba(20, 42, 29, 0.25), transparent 30%);
+}
+
+.badge {
+  position: absolute;
+  right: clamp(20px, 5vw, 72px);
+  bottom: clamp(70px, 12vh, 130px);
+}
+
+.caption {
+  position: absolute;
+  bottom: 22px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.captionLeft {
+  left: 28px;
+}
+.captionRight {
+  right: 28px;
+}
+
+/* Floating "pizza of the month" card — green glass */
+.featured {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px 14px 14px;
+  border-radius: var(--radius);
+  background: rgba(31, 61, 43, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  color: var(--cream);
+  box-shadow: var(--shadow-card);
+  animation: rise 0.9s 0.6s var(--ease) both;
+  transition: transform 0.3s var(--ease);
+}
+
+.featured:hover {
+  transform: translateY(-3px);
+}
+
+.featuredIcon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--red);
+}
+
+.featuredBody {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.featuredLabel {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--basil);
+}
+
+.featuredBody strong {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.featuredPrice {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.featuredPrice s {
+  opacity: 0.55;
+  font-weight: 500;
+}
+
+.featuredDeal {
+  align-self: flex-start;
+  margin-left: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--red-deep);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.14);
+  }
+}
+
+@media (max-width: 920px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .copy {
+    padding: 128px var(--gutter) 48px;
+  }
+  .media {
+    margin: 0 0 0 var(--gutter);
+    height: min(78vw, 520px);
+  }
+}
+
+@media (max-width: 480px) {
+  .facts {
+    justify-content: space-between;
+  }
+  .badge {
+    bottom: 56px;
+    right: 16px;
+  }
+  .captionLeft {
+    display: none;
+  }
+}

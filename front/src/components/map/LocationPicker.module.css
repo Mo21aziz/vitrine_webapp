@@ -1,0 +1,140 @@
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.search {
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 13px 44px 13px 15px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #e9e3da;
+  background: #f6f3ee;
+  color: var(--ink);
+  outline: none;
+  transition:
+    border-color 0.2s var(--ease),
+    background-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.searchInput:focus {
+  border-color: var(--green-3);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(60, 109, 79, 0.12);
+}
+
+.spinner {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border: 2px solid rgba(31, 61, 43, 0.2);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.results {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+}
+
+.results button {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--green);
+  text-align: left;
+}
+
+.results button:hover,
+.results button:focus-visible {
+  background: var(--cream);
+}
+
+.results button > svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--red);
+}
+
+.results strong {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.results small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.map {
+  height: 300px;
+  border-radius: var(--radius);
+  box-shadow: none;
+  border: 1px solid #e9e3da;
+}
+
+.map :global(.leaflet-container) {
+  cursor: crosshair;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.status {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.clear {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(184, 40, 31, 0.08);
+  color: var(--red-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.clear:hover {
+  background: var(--red);
+  color: var(--cream);
+}

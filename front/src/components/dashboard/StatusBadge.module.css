@@ -1,0 +1,33 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.NOUVELLE {
+  background: rgba(184, 40, 31, 0.12);
+  color: var(--red-deep);
+}
+
+.EN_COURS {
+  background: rgba(214, 140, 40, 0.15);
+  color: #9a5a0c;
+}
+
+.TRAITEE {
+  background: rgba(60, 109, 79, 0.14);
+  color: var(--green-2);
+}
