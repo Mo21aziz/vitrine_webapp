@@ -83,8 +83,8 @@ export function Hero({ featured, adresses }: HeroProps) {
           </h1>
 
           <p className={styles.lead}>
-            Un petit morceau de Naples au cœur de la ville. Installez-vous à notre table pour une cuisine honnête, des
-            pizzas sorties du four à bois et des histoires qui durent toute la soirée.
+            40 ans de savoir-faire depuis 1987. Pizza en tranche, burgers, ciabattas et clubs généreux : installez-vous
+            à notre table ou emportez votre part.
           </p>
 
           <div className={styles.actions}>
@@ -97,6 +97,10 @@ export function Hero({ featured, adresses }: HeroProps) {
           </div>
 
           <dl className={styles.facts}>
+            <div>
+              <dt>D’expérience</dt>
+              <dd>40 ans</dd>
+            </div>
             <div>
               <dt>Depuis</dt>
               <dd>1987</dd>
@@ -151,7 +155,7 @@ export function Hero({ featured, adresses }: HeroProps) {
             </svg>
           )}
         </button>
-        <span>Napoli · Italia</span>
+        <span>Depuis 1987 · 40 ans d’expérience</span>
       </div>
     </section>
   )

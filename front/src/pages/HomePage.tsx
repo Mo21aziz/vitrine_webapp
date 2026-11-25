@@ -15,7 +15,8 @@ import { useAsync } from '../hooks/useAsync'
 const MARQUEE_WORDS = [
   'Buon appetito',
   'Benvenuti',
-  'Pizza napoletana',
+  '40 ans d’expérience',
+  'Pizza en tranche',
   'Fatto con amore',
   'Mamma mia !',
   'La dolce vita',

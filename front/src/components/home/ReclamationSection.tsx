@@ -7,7 +7,7 @@ import styles from './ReclamationSection.module.css'
 const STEPS = [
   'Choisissez le restaurant concerné',
   'Décrivez ce qui s’est passé',
-  'L’équipe du restaurant vous répond par e-mail',
+  'L’équipe du restaurant vous répond rapidement — votre satisfaction avant tout',
 ]
 
 /** Customer complaints — its own section, separate from the restaurants and maps */

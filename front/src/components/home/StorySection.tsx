@@ -1,11 +1,11 @@
 import logoSrc from '../../assets/logo-dinapoli.png'
-import margherita from '../../assets/margherita.jpg'
+import pizzaPlaque from '../../assets/pizza-plaque.jpg'
 import styles from './StorySection.module.css'
 
 const PILLARS = [
-  { n: '48h', label: 'de maturation pour une pâte légère et digeste' },
-  { n: '90s', label: 'de cuisson au four à bois, à la napolitaine' },
-  { n: '100%', label: 'de recettes de famille, transmises à la main' },
+  { n: '40 ans', label: 'd’expérience et de savoir-faire, depuis 1987' },
+  { n: '1/8', label: 'à la part, en quart, en demi ou en plaque entière' },
+  { n: '100%', label: 'fait maison, avec nos recettes de famille' },
 ]
 
 export function StorySection() {
@@ -13,18 +13,22 @@ export function StorySection() {
     <section id="histoire" className={`${styles.section} texture`}>
       <div className={`container ${styles.inner}`}>
         <figure className={styles.figure} data-reveal="zoom">
-          <img src={margherita} alt="Margherita au basilic frais sur une pelle à pizza" loading="lazy" />
-          <figcaption>La Margherita, comme à Naples.</figcaption>
+          <img src={pizzaPlaque} alt="Pizza en plaque aux crevettes, pesto et roquette sur une planche en bois" loading="lazy" />
+          <figcaption>La pizza en tranche, notre signature.</figcaption>
         </figure>
 
         <div className={styles.copy} data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-          <p className="eyebrow">La famiglia</p>
+          <p className="eyebrow">La famiglia · depuis 1987</p>
           <h2 className={styles.title}>
-            Une recette, <em>une famille,</em> un four qui ne s’éteint jamais.
+            40 ans de passion, <em>une tranche</em> à la fois.
           </h2>
           <p className={styles.text}>
-            Depuis 1987, Di Napoli fait les choses à l’ancienne : une pâte pétrie chaque matin, des tomates mûries au
-            soleil et une mozzarella fondante. Chez nous, on vient pour manger, on reste pour l’ambiance.
+            Depuis 1987, Di Napoli régale ses clients avec sa pizza en tranche : une pâte moelleuse et croustillante,
+            cuite en plaque et généreusement garnie, servie à la part ou en plaque entière à partager.
+          </p>
+          <p className={styles.text}>
+            Quarante ans plus tard, ce sont toujours les mêmes recettes de famille, le même accueil chaleureux — et le
+            même plaisir de vous voir revenir.
           </p>
 
           <ul className={styles.pillars}>

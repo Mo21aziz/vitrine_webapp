@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { ALL_RESTAURANTS_MAPS_URL } from '../../utils/maps'
-import { ArrowUpRight, Facebook, Instagram, Pencil, Pin, TikTok } from '../ui/Icons'
+import { PHONE_DISPLAY, PHONE_HREF } from '../../utils/contact'
+import { ArrowUpRight, Facebook, Instagram, Pencil, Phone, Pin, TikTok } from '../ui/Icons'
 import { Logo } from '../ui/Logo'
 import styles from './Footer.module.css'
 
@@ -47,7 +48,7 @@ const NAV = [
 
 export function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer id="contact" className={styles.footer}>
       <div className={styles.flag} aria-hidden="true">
         <span />
         <span />
@@ -59,8 +60,8 @@ export function Footer() {
           <Logo />
           <p className={styles.tagline}>Pizzeria · Cucina · Famiglia</p>
           <p className={styles.about}>
-            Une pizzeria de famille depuis 1987 : des pizzas faites à la main, servies avec le sourire dans nos
-            restaurants en Tunisie.
+            40 ans d’expérience depuis 1987 : pizza en tranche, burgers et sandwichs faits maison, servis avec le
+            sourire dans nos restaurants en Tunisie.
           </p>
           <div className={styles.socialIcons}>
             {SOCIALS.map((s) => (
@@ -95,6 +96,17 @@ export function Footer() {
         <div className={styles.col}>
           <h2 className={styles.colTitle}>Contact</h2>
           <ul className={styles.contact}>
+            <li>
+              <a href={PHONE_HREF} className={`${styles.contactLink} ${styles.contactPhone}`}>
+                <span className={styles.contactIcon}>
+                  <Phone size={15} />
+                </span>
+                <span>
+                  <strong>{PHONE_DISPLAY}</strong>
+                  <small>Appelez-nous</small>
+                </span>
+              </a>
+            </li>
             <li>
               <a href="/#reclamation" className={styles.contactLink}>
                 <span className={styles.contactIcon}>

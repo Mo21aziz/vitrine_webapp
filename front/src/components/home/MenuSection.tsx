@@ -22,7 +22,7 @@ export function MenuSection({ menus, loading, error, onRetry }: MenuSectionProps
               Les classiques, <em>sans détour.</em>
             </>
           }
-          intro="Choisissez une catégorie pour découvrir nos plats : une pâte qui prend son temps, des produits choisis avec soin et le feu du four à bois."
+          intro="Choisissez une catégorie pour découvrir nos plats : pizza en tranche, burgers, ciabattas, clubs et snacks, préparés avec 40 ans de savoir-faire."
         />
 
         {loading && !menus && (

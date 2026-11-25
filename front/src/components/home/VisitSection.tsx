@@ -16,7 +16,7 @@ function telHref(phone: string) {
   return 'tel:' + phone.replace(/[^+0-9]/g, '')
 }
 
-type Open = number | 'all' | null
+type Open = number | null
 
 /** Loads a map lazily; if it cannot load, shows a Google Maps link instead of breaking the page */
 function MapSlot({ children }: { children: ReactNode }) {
@@ -39,7 +39,6 @@ export function VisitSection({ pointsDeVente }: { pointsDeVente?: PointDeVente[]
   // maps stay mounted after their first opening so closing can animate smoothly
   const [mounted, setMounted] = useState<Exclude<Open, null>[]>([])
   const placedCount = points.filter(hasCoords).length
-  const allOpen = openId === 'all'
 
   function toggle(id: Exclude<Open, null>) {
     setOpenId((current) => (current === id ? null : id))
@@ -64,16 +63,10 @@ export function VisitSection({ pointsDeVente }: { pointsDeVente?: PointDeVente[]
           {points.length > 0 && (
             <div className={styles.toolbar} data-reveal>
               {placedCount > 1 && (
-                <button
-                  type="button"
-                  className={`${styles.toolBtn} ${allOpen ? styles.toolBtnActive : ''}`}
-                  onClick={() => toggle('all')}
-                  aria-expanded={allOpen}
-                  aria-controls="carte-tous"
-                >
+                <span className={styles.toolBadge}>
                   <Pin size={16} />
-                  {allOpen ? 'Masquer la carte' : `Voir les ${placedCount} restaurants sur la carte`}
-                </button>
+                  Nos {placedCount} restaurants sur la carte
+                </span>
               )}
               <a href={ALL_RESTAURANTS_MAPS_URL} target="_blank" rel="noreferrer" className={styles.toolLink}>
                 Itinéraire · Google Maps <ArrowUpRight size={14} />
@@ -82,17 +75,12 @@ export function VisitSection({ pointsDeVente }: { pointsDeVente?: PointDeVente[]
             </div>
           )}
 
+          {/* map of all restaurants, always visible (Leaflet still loads lazily, after the page) */}
           {placedCount > 1 && (
-            <div className={`${styles.allMap} ${allOpen ? styles.open : ''}`}>
-              <div id="carte-tous" className={styles.drawer} aria-hidden={!allOpen} inert={!allOpen}>
-                <div className={styles.drawerInner}>
-                  {mounted.includes('all') && (
-                    <MapSlot>
-                      <LocationsMap points={points} />
-                    </MapSlot>
-                  )}
-                </div>
-              </div>
+            <div id="carte-tous" className={styles.allMap} data-reveal>
+              <MapSlot>
+                <LocationsMap points={points} />
+              </MapSlot>
             </div>
           )}
 

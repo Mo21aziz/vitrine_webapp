@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { ArrowUpRight } from '../ui/Icons'
+import { PHONE_DISPLAY, PHONE_HREF } from '../../utils/contact'
+import { ArrowUpRight, Phone } from '../ui/Icons'
 import { Logo } from '../ui/Logo'
 import styles from './Navbar.module.css'
 
@@ -11,6 +12,7 @@ const NAV_LINKS = [
   { id: 'histoire', label: 'Notre histoire' },
   { id: 'adresses', label: 'Nos adresses' },
   { id: 'reclamation', label: 'Réclamation' },
+  { id: 'contact', label: 'Contact' },
 ]
 
 interface NavbarProps {
@@ -66,6 +68,13 @@ export function Navbar({ current }: NavbarProps) {
         </nav>
 
         <div className={styles.actions}>
+          <a href={PHONE_HREF} className={styles.phone}>
+            <span className={styles.phoneIcon} aria-hidden="true">
+              <Phone size={14} />
+            </span>
+            <span className="sr-only">Appeler Di Napoli au </span>
+            <span className={styles.phoneNumber}>{PHONE_DISPLAY}</span>
+          </a>
           <a href="/#adresses" className={styles.cta}>
             Nous trouver <ArrowUpRight size={15} />
           </a>

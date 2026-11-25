@@ -20,7 +20,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
+  max-width: 1440px; /* a bit wider than the page so 7 links + phone + button fit */
 }
 
 .pill {
@@ -33,7 +34,8 @@
 }
 
 .pill a {
-  padding: 8px 16px;
+  padding: 8px 13px;
+  white-space: nowrap;
   border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 600;
@@ -101,7 +103,7 @@
   background: var(--cream);
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1180px) {
   .cta {
     display: none;
   }
@@ -135,5 +137,139 @@
     opacity: 1;
     visibility: visible;
     transform: none;
+  }
+}
+
+/* ---------- phone number: lit up in red and green ---------- */
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 18px 4px 4px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  /* white inside, moving red/green gradient on the border */
+  background:
+    linear-gradient(var(--white), var(--white)) padding-box,
+    linear-gradient(90deg, var(--red), var(--green), var(--red), var(--green), var(--red)) border-box;
+  background-size:
+    100% 100%,
+    300% 100%;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  animation:
+    phoneBorder 4s linear infinite,
+    phoneGlow 3s ease-in-out infinite;
+  transition: transform 0.25s var(--ease);
+}
+
+.phoneIcon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  animation: phoneIconColor 3s ease-in-out infinite;
+}
+
+/* soft halo ring around the icon */
+.phoneIcon::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: phoneHalo 3s ease-out infinite;
+}
+
+.phoneIcon svg {
+  animation: phoneRing 3s ease-in-out infinite;
+}
+
+.phoneNumber {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: linear-gradient(90deg, var(--red) 0%, var(--red) 40%, var(--green) 60%, var(--green) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.phone:hover {
+  transform: translateY(-1px) scale(1.03);
+}
+
+@keyframes phoneBorder {
+  to {
+    background-position:
+      0 0,
+      150% 0;
+  }
+}
+
+@keyframes phoneGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(216, 32, 39, 0), 0 4px 18px rgba(216, 32, 39, 0.35); }
+  50% { box-shadow: 0 0 0 0 rgba(15, 155, 77, 0), 0 4px 18px rgba(15, 155, 77, 0.4); }
+}
+
+@keyframes phoneIconColor {
+  0%, 100% { background: var(--red); }
+  50% { background: var(--green); }
+}
+
+@keyframes phoneHalo {
+  0% { opacity: 0.7; transform: scale(1); color: var(--red); }
+  45% { opacity: 0; transform: scale(1.7); }
+  50% { opacity: 0.7; transform: scale(1); color: var(--green); }
+  95%, 100% { opacity: 0; transform: scale(1.7); }
+}
+
+/* a little ring every cycle */
+@keyframes phoneRing {
+  0%, 12%, 100% { transform: rotate(0); }
+  2% { transform: rotate(-16deg); }
+  4% { transform: rotate(14deg); }
+  6% { transform: rotate(-10deg); }
+  8% { transform: rotate(8deg); }
+  10% { transform: rotate(-4deg); }
+}
+
+/* keep it lit even when the device asks for reduced motion (the global rule would freeze it) */
+@media (prefers-reduced-motion: reduce) {
+  .phone,
+  .phoneIcon,
+  .phoneIcon::after,
+  .phoneIcon svg {
+    animation-duration: 3s !important;
+    animation-iteration-count: infinite !important;
+  }
+  .phone {
+    animation-duration: 4s, 3s !important;
+  }
+}
+
+/* narrower desktops: keep the phone number, drop "Nous trouver" */
+@media (max-width: 1380px) {
+  .cta {
+    display: none;
+  }
+}
+
+/* small phones: just the round call button next to the menu */
+@media (max-width: 520px) {
+  .phone {
+    padding: 2px;
+  }
+  .phoneNumber {
+    display: none;
+  }
+  .phone .phoneIcon {
+    width: 40px;
+    height: 40px;
   }
 }

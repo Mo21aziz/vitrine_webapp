@@ -49,14 +49,82 @@
   color: var(--basil);
 }
 
+/* discount sticker: big, red, slightly tilted, gently pulsing */
 .deal {
-  padding: 5px 11px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1;
+  transform: rotate(-12deg);
+  box-shadow:
+    0 0 0 3px var(--white),
+    0 10px 22px rgba(0, 0, 0, 0.28);
+  animation: dealPulse 2.4s var(--ease) infinite;
+}
+
+.deal small {
+  margin-bottom: 3px;
+  font-family: var(--font-body, inherit);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@keyframes dealPulse {
+  0%, 100% { transform: rotate(-12deg) scale(1); }
+  50% { transform: rotate(-12deg) scale(1.08); }
+}
+
+/* card on sale: red frame + red price */
+.onSale {
+  box-shadow:
+    inset 0 0 0 3px var(--red),
+    var(--shadow-card);
+}
+
+.onSale .price strong {
+  padding: 4px 12px;
   border-radius: 999px;
   background: var(--red);
-  color: var(--cream);
-  font-size: 0.75rem;
+  color: var(--white);
+  font-size: 1.45rem;
+}
+
+.onSale .price s {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+}
+
+.saving {
+  margin-top: -4px;
+  align-self: flex-end;
+  font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.04em;
+  color: var(--basil);
+}
+
+.withPhoto .saving {
+  margin-bottom: 14px;
+}
+
+.onSale.withPhoto .price {
+  margin-bottom: 4px;
 }
 
 /* ---------- photo variant ---------- */
@@ -93,7 +161,6 @@
 }
 
 .photo .deal {
-  position: absolute;
   top: 12px;
   right: 12px;
 }

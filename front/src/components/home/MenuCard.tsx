@@ -5,12 +5,18 @@ import { formatPrix } from '../../utils/format'
 import styles from './MenuCard.module.css'
 
 export function MenuCard({ article, index }: { article: Article; index: number }) {
-  const deal = article.remise > 0 && <span className={styles.deal}>-{article.remise}%</span>
+  const onSale = article.remise > 0
+  const economie = Math.round((article.prix - article.prixFinal) * 1000) / 1000
+  const deal = onSale && (
+    <span className={styles.deal}>
+      <small>Promo</small>-{article.remise}%
+    </span>
+  )
 
   return (
     <Link
       to={`/plat/${article.id}`}
-      className={`${styles.card} ${article.imageUrl ? styles.withPhoto : ''}`}
+      className={`${styles.card} ${article.imageUrl ? styles.withPhoto : ''} ${onSale ? styles.onSale : ''}`}
       aria-label={`${article.nom}, ${formatPrix(article.prixFinal)} — voir le détail`}
     >
       {article.imageUrl ? (
@@ -31,7 +37,7 @@ export function MenuCard({ article, index }: { article: Article; index: number }
 
       <footer className={styles.price}>
         <span className={styles.dots} aria-hidden="true" />
-        {article.remise > 0 && (
+        {onSale && (
           <s>
             <span className="sr-only">Prix initial </span>
             {formatPrix(article.prix)}
@@ -39,6 +45,7 @@ export function MenuCard({ article, index }: { article: Article; index: number }
         )}
         <strong>{formatPrix(article.prixFinal)}</strong>
       </footer>
+      {onSale && <p className={styles.saving}>Vous économisez {formatPrix(economie)}</p>}
     </Link>
   )
 }
