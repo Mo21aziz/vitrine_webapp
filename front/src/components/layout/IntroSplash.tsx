@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import logoSrc from '../../assets/logo-dinapoli.png'
 import styles from './IntroSplash.module.css'
@@ -19,6 +19,13 @@ function shouldShow(pathname: string) {
 export function IntroSplash() {
   const { pathname } = useLocation()
   const [phase, setPhase] = useState<'show' | 'leave' | 'done'>(() => (shouldShow(pathname) ? 'show' : 'done'))
+
+  // tells the hero to hold its opening animation until the curtain lifts (set before the first paint)
+  useLayoutEffect(() => {
+    const root = document.documentElement
+    if (phase === 'show') root.dataset.intro = 'playing'
+    else delete root.dataset.intro
+  }, [phase])
 
   useEffect(() => {
     if (phase === 'done') return

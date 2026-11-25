@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react'
 import heroVideo from '../../assets/hero.mp4'
 import type { Article } from '../../types'
 import { formatPrix } from '../../utils/format'
@@ -15,18 +15,11 @@ interface HeroProps {
 export function Hero({ featured, adresses }: HeroProps) {
   const section = useRef<HTMLElement>(null)
   const video = useRef<HTMLVideoElement>(null)
-  // plays automatically; only the visitor's pause button stops it
-  const [paused, setPaused] = useState(false)
-
   // play while the hero is on screen (pause when scrolled away, to save battery and data)
   useEffect(() => {
     const v = video.current
     const s = section.current
     if (!v || !s) return
-    if (paused) {
-      v.pause()
-      return
-    }
     const play = () => v.play().catch(() => undefined)
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) play()
@@ -45,7 +38,7 @@ export function Hero({ featured, adresses }: HeroProps) {
       observer.disconnect()
       events.forEach((e) => window.removeEventListener(e, retry))
     }
-  }, [paused])
+  }, [])
 
   return (
     <section ref={section} id="accueil" className={styles.hero}>
@@ -76,10 +69,16 @@ export function Hero({ featured, adresses }: HeroProps) {
             Pizzeria · Cucina · Famiglia
           </p>
 
-          <h1 className={styles.title}>
-            Fait avec <em>passion</em>.
-            <br />
-            Servi avec joie.
+          <h1 className={styles.title} aria-label="Fait avec passion. Servi avec joie.">
+            <span className={styles.line} aria-hidden="true">
+              <Word i={0}>Fait</Word> <Word i={1}>avec</Word>{' '}
+              <Word i={2}>
+                <em>passion</em>.
+              </Word>
+            </span>
+            <span className={styles.line} aria-hidden="true">
+              <Word i={3}>Servi</Word> <Word i={4}>avec</Word> <Word i={5}>joie.</Word>
+            </span>
           </h1>
 
           <p className={styles.lead}>
@@ -137,26 +136,19 @@ export function Hero({ featured, adresses }: HeroProps) {
 
       <div className={`container ${styles.bottomBar}`}>
         <span>Via della Passione</span>
-        <button
-          type="button"
-          className={styles.playToggle}
-          onClick={() => setPaused((p) => !p)}
-          aria-label={paused ? 'Lire la vidéo' : 'Mettre la vidéo en pause'}
-          title={paused ? 'Lire la vidéo' : 'Pause'}
-        >
-          {paused ? (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M7 4.5v15l13-7.5z" />
-            </svg>
-          ) : (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <rect x="6" y="4.5" width="4" height="15" rx="1" />
-              <rect x="14" y="4.5" width="4" height="15" rx="1" />
-            </svg>
-          )}
-        </button>
         <span>Depuis 1987 · 40 ans d’expérience</span>
       </div>
     </section>
+  )
+}
+
+/** One word of the title, rising out of a mask; i = its order in the opening sequence */
+function Word({ i, children }: { i: number; children: ReactNode }) {
+  return (
+    <span className={styles.word}>
+      <span className={styles.wordInner} style={{ '--i': i } as CSSProperties}>
+        {children}
+      </span>
+    </span>
   )
 }

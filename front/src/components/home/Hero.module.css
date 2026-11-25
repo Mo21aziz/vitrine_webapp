@@ -62,20 +62,107 @@
   max-width: 40rem;
 }
 
+/* opening sequence: eyebrow, then the title word by word, then the rest */
 .copy > * {
   animation: rise 0.9s var(--ease) both;
 }
-.copy > :nth-child(2) {
-  animation-delay: 0.08s;
+.copy > .title {
+  animation: none;
 }
 .copy > :nth-child(3) {
-  animation-delay: 0.16s;
+  animation-delay: 0.95s;
 }
 .copy > :nth-child(4) {
-  animation-delay: 0.24s;
+  animation-delay: 1.1s;
 }
 .copy > :nth-child(5) {
-  animation-delay: 0.32s;
+  animation-delay: 1.25s;
+}
+
+.line {
+  display: block;
+}
+
+/* each word rises out of its own mask */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* room for descenders (p, j) and the text shadow inside the mask */
+  padding: 0 0.04em 0.16em;
+  margin: 0 -0.04em -0.16em;
+}
+
+.wordInner {
+  display: inline-block;
+  transform-origin: 0 100%;
+  animation: wordIn 1.1s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  animation-delay: calc(0.15s + var(--i) * 0.11s);
+}
+
+@keyframes wordIn {
+  from {
+    opacity: 0;
+    transform: translateY(110%) rotate(7deg);
+    filter: blur(6px);
+  }
+  55% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* "passion": a red-to-green brush stroke draws under it once the words are in */
+.title em {
+  position: relative;
+}
+
+.title em::after {
+  content: '';
+  position: absolute;
+  left: 0.02em;
+  right: 0.02em;
+  bottom: 0.04em;
+  height: 0.07em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--red), #ffffff 50%, var(--green));
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: stroke 0.9s 0.95s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes stroke {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* while the logo intro covers the page, hold everything; it starts as the curtain lifts */
+:global(html[data-intro='playing']) .copy > *,
+:global(html[data-intro='playing']) .wordInner,
+:global(html[data-intro='playing']) .title em::after,
+:global(html[data-intro='playing']) .badge,
+:global(html[data-intro='playing']) .featured {
+  animation-play-state: paused;
+}
+
+/* the opening plays once even when the device asks for reduced motion (short, no loop) */
+@media (prefers-reduced-motion: reduce) {
+  .copy > *,
+  .badge,
+  .featured {
+    animation-duration: 0.9s !important;
+  }
+  .wordInner {
+    animation-duration: 1.1s !important;
+  }
+  .title em::after {
+    animation-duration: 0.9s !important;
+  }
 }
 
 .eyebrow {
@@ -175,7 +262,7 @@
 .badge {
   margin-top: auto;
   margin-right: clamp(0px, 3vw, 40px);
-  animation: rise 0.9s 0.5s var(--ease) both;
+  animation: rise 0.9s 1.35s var(--ease) both;
 }
 
 /* "pizza of the month" — green glass */
@@ -190,7 +277,7 @@
   backdrop-filter: blur(14px);
   color: var(--cream);
   box-shadow: var(--shadow-card);
-  animation: rise 0.9s 0.6s var(--ease) both;
+  animation: rise 0.9s 1.2s var(--ease) both;
   transition: transform 0.3s var(--ease);
 }
 
@@ -262,30 +349,6 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
-}
-
-.playToggle {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(7, 90, 44, 0.35);
-  backdrop-filter: blur(8px);
-  color: var(--cream);
-  transition:
-    background-color 0.2s var(--ease),
-    transform 0.2s var(--ease);
-}
-
-.playToggle:hover {
-  background: var(--cream);
-  color: var(--red-deep);
-}
-
-.playToggle:active {
-  transform: scale(0.94);
 }
 
 /* ---------- motion ---------- */
