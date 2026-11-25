@@ -69,10 +69,10 @@
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  border: 1px solid rgba(255, 248, 238, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background: transparent;
-  color: rgba(255, 248, 238, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.82rem;
   font-weight: 600;
   transition:
@@ -93,12 +93,12 @@
 .count {
   padding: 1px 8px;
   border-radius: 999px;
-  background: rgba(31, 61, 43, 0.1);
+  background: rgba(15, 155, 77, 0.1);
   font-size: 0.72rem;
 }
 
 .filters button[aria-pressed='false'] .count {
-  background: rgba(255, 248, 238, 0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .toast {
@@ -141,12 +141,12 @@
 
 .table td {
   padding: 14px 10px;
-  border-top: 1px solid #ece5da;
+  border-top: 1px solid #e9edeb;
   vertical-align: middle;
 }
 
 .table tr.editing td {
-  background: rgba(60, 109, 79, 0.07);
+  background: rgba(11, 122, 60, 0.07);
 }
 
 .name {
@@ -183,8 +183,8 @@
   height: 48px;
   border-radius: 12px;
   object-fit: cover;
-  background: #f1ece4;
-  color: #c4b9a9;
+  background: #eff2f0;
+  color: #b5c0ba;
 }
 
 .sub {
@@ -205,7 +205,7 @@
 .deal {
   padding: 3px 9px;
   border-radius: 999px;
-  background: rgba(184, 40, 31, 0.12);
+  background: rgba(216, 32, 39, 0.12);
   color: var(--red-deep);
   font-size: 0.75rem;
   font-weight: 800;
@@ -214,7 +214,7 @@
 .tag {
   padding: 3px 10px;
   border-radius: 999px;
-  background: rgba(31, 61, 43, 0.08);
+  background: rgba(15, 155, 77, 0.08);
   color: var(--green);
   font-size: 0.75rem;
   font-weight: 700;
@@ -234,7 +234,7 @@
   height: 34px;
   border: none;
   border-radius: 10px;
-  background: rgba(31, 61, 43, 0.06);
+  background: rgba(15, 155, 77, 0.06);
   color: var(--green);
   transition:
     background-color 0.2s var(--ease),
@@ -275,7 +275,7 @@
   place-items: center;
   height: 360px;
   border-radius: var(--radius);
-  background: #f6f3ee;
+  background: #f4f6f5;
   color: var(--muted);
   font-size: 0.85rem;
 }
@@ -311,7 +311,7 @@
   align-items: flex-start;
   gap: 16px;
   padding: 18px 10px;
-  border-top: 1px solid #ece5da;
+  border-top: 1px solid #e9edeb;
 }
 
 .avis:first-child {
@@ -319,7 +319,7 @@
 }
 
 .avisPending {
-  background: linear-gradient(90deg, rgba(184, 40, 31, 0.05), transparent 60%);
+  background: linear-gradient(90deg, rgba(216, 32, 39, 0.05), transparent 60%);
   box-shadow: inset 3px 0 0 var(--red);
 }
 
@@ -391,7 +391,7 @@
 .formError {
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  background: rgba(184, 40, 31, 0.1);
+  background: rgba(216, 32, 39, 0.1);
   color: var(--red-deep);
   font-size: 0.88rem;
 }
@@ -439,4 +439,26 @@
   .formRow {
     grid-template-columns: 1fr;
   }
+}
+
+/* Google Maps search text (adresses form) */
+.mapsQuery {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 155, 77, 0.06);
+  border: 1px solid var(--line);
+}
+
+.testLink {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--green-3);
+}
+
+.testLink:hover {
+  color: var(--red);
 }

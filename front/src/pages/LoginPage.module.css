@@ -61,7 +61,7 @@
 .error {
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  background: rgba(184, 40, 31, 0.1);
+  background: rgba(216, 32, 39, 0.1);
   color: var(--red-deep);
   font-size: 0.9rem;
 }

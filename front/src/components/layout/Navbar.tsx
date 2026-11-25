@@ -7,9 +7,10 @@ import styles from './Navbar.module.css'
 const NAV_LINKS = [
   { id: 'accueil', label: 'Accueil' },
   { id: 'carte', label: 'La carte' },
+  { id: 'avis', label: 'Satisfaction client' },
   { id: 'histoire', label: 'Notre histoire' },
   { id: 'adresses', label: 'Nos adresses' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'reclamation', label: 'Réclamation' },
 ]
 
 interface NavbarProps {

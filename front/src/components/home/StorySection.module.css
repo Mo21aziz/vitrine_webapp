@@ -61,7 +61,7 @@
 
 .text {
   max-width: 34rem;
-  color: rgba(255, 248, 238, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.05rem;
 }
 
@@ -80,8 +80,8 @@
   gap: 6px;
   padding: 18px;
   border-radius: var(--radius);
-  background: rgba(255, 248, 238, 0.06);
-  border: 1px solid rgba(255, 248, 238, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .pillars strong {
@@ -93,7 +93,7 @@
 
 .pillars span {
   font-size: 0.85rem;
-  color: rgba(255, 248, 238, 0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ---------- Letter from the team (cream paper, gold frame) ---------- */
@@ -124,44 +124,19 @@
 }
 
 .wordmark {
-  position: relative;
-  font-family: var(--font-display);
-  font-size: clamp(2.6rem, 6vw, 3.6rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.01em;
+  width: min(320px, 78%);
+  margin: 0 auto;
 }
 
-.wmDi {
-  color: #12924a;
-}
-
-.wmNapoli {
-  color: #d1202f;
-}
-
-.since {
-  position: absolute;
-  right: 0;
-  bottom: -14px;
-  padding: 1px 5px;
-  background: #2d2d2d;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.5rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.tricolore {
+.wordmark img {
   display: block;
-  width: min(270px, 70%);
-  height: 6px;
-  margin-top: 20px;
-  background: linear-gradient(90deg, #12924a 0 33.3%, #ffffff 33.3% 66.6%, #d1202f 66.6%);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  height: auto;
 }
+
+
+
+
 
 .letterBody {
   display: flex;

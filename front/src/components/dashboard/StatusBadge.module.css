@@ -18,7 +18,7 @@
 }
 
 .NOUVELLE {
-  background: rgba(184, 40, 31, 0.12);
+  background: rgba(216, 32, 39, 0.12);
   color: var(--red-deep);
 }
 
@@ -28,6 +28,6 @@
 }
 
 .TRAITEE {
-  background: rgba(60, 109, 79, 0.14);
+  background: rgba(11, 122, 60, 0.14);
   color: var(--green-2);
 }

@@ -55,6 +55,8 @@ export interface PointDeVente {
   adresse: string | null
   latitude: number | null
   longitude: number | null
+  googleMapsQuery: string | null
+  telephone: string | null
 }
 
 export interface PointDeVenteInput {
@@ -62,6 +64,8 @@ export interface PointDeVenteInput {
   adresse: string | null
   latitude: number | null
   longitude: number | null
+  googleMapsQuery: string | null
+  telephone: string | null
 }
 
 export interface GeocodeResult {
@@ -105,6 +109,12 @@ export interface AvisSummary {
   moyenne: number | null
   total: number
   avis: AvisPublic[]
+}
+
+export interface AvisRecents {
+  moyenne: number | null
+  total: number
+  avis: (AvisPublic & { article: { id: number; nom: string; imageUrl: string | null } })[]
 }
 
 export interface AvisInput {

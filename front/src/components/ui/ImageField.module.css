@@ -18,8 +18,8 @@
   aspect-ratio: 2 / 1;
   max-height: 220px;
   border-radius: var(--radius-sm);
-  border: 1.5px dashed #d9d0c3;
-  background: #f6f3ee;
+  border: 1.5px dashed #cfd8d3;
+  background: #f4f6f5;
   overflow: hidden;
   transition:
     border-color 0.2s var(--ease),
@@ -28,12 +28,12 @@
 
 .zone.filled {
   border-style: solid;
-  border-color: #e9e3da;
+  border-color: #e3e8e5;
 }
 
 .zone.dragging {
   border-color: var(--green-3);
-  background: rgba(60, 109, 79, 0.08);
+  background: rgba(11, 122, 60, 0.08);
 }
 
 .preview {
@@ -68,7 +68,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(20, 42, 29, 0.6);
+  background: rgba(7, 90, 44, 0.6);
   color: var(--cream);
   font-size: 0.85rem;
   font-weight: 700;
@@ -77,7 +77,7 @@
 .spinner {
   width: 18px;
   height: 18px;
-  border: 2px solid rgba(255, 248, 238, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: var(--cream);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -127,7 +127,7 @@
 
 .remove {
   border: 1px solid transparent;
-  background: rgba(184, 40, 31, 0.08);
+  background: rgba(216, 32, 39, 0.08);
   color: var(--red-deep);
 }
 

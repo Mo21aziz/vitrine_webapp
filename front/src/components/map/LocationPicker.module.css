@@ -13,8 +13,8 @@
   width: 100%;
   padding: 13px 44px 13px 15px;
   border-radius: var(--radius-sm);
-  border: 1px solid #e9e3da;
-  background: #f6f3ee;
+  border: 1px solid #e3e8e5;
+  background: #f4f6f5;
   color: var(--ink);
   outline: none;
   transition:
@@ -26,7 +26,7 @@
 .searchInput:focus {
   border-color: var(--green-3);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(60, 109, 79, 0.12);
+  box-shadow: 0 0 0 4px rgba(11, 122, 60, 0.12);
 }
 
 .spinner {
@@ -36,7 +36,7 @@
   width: 18px;
   height: 18px;
   margin-top: -9px;
-  border: 2px solid rgba(31, 61, 43, 0.2);
+  border: 2px solid rgba(15, 155, 77, 0.2);
   border-top-color: var(--green);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -101,7 +101,7 @@
   height: 300px;
   border-radius: var(--radius);
   box-shadow: none;
-  border: 1px solid #e9e3da;
+  border: 1px solid #e3e8e5;
 }
 
 .map :global(.leaflet-container) {
@@ -128,7 +128,7 @@
   padding: 6px 12px;
   border: none;
   border-radius: 999px;
-  background: rgba(184, 40, 31, 0.08);
+  background: rgba(216, 32, 39, 0.08);
   color: var(--red-deep);
   font-size: 0.78rem;
   font-weight: 700;

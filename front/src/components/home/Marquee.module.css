@@ -13,7 +13,7 @@
   align-items: center;
   gap: 32px;
   padding-right: 32px;
-  animation: scroll 38s linear infinite;
+  animation: scroll 32s linear infinite;
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2.2vw, 1.75rem);
   font-style: italic;
@@ -32,5 +32,14 @@
 @keyframes scroll {
   to {
     transform: translateX(-100%);
+  }
+}
+
+/* The band always scrolls, even when the device asks for reduced motion
+   (the global rule in index.css would otherwise freeze it). */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation-duration: 32s !important;
+    animation-iteration-count: infinite !important;
   }
 }

@@ -1,7 +1,7 @@
 .shell {
   min-height: 100svh;
   background:
-    radial-gradient(1200px 500px at 50% -10%, rgba(184, 40, 31, 0.28), transparent 70%),
+    radial-gradient(1200px 500px at 50% -10%, rgba(216, 32, 39, 0.28), transparent 70%),
     var(--green-deep);
   color: var(--cream);
 }
@@ -15,7 +15,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 3px solid rgba(255, 248, 238, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.2);
   border-top-color: var(--cream);
   animation: spin 0.8s linear infinite;
 }
@@ -33,7 +33,7 @@
   margin-inline: auto;
   padding: 18px var(--gutter);
   backdrop-filter: blur(14px);
-  background: rgba(20, 42, 29, 0.72);
+  background: rgba(7, 90, 44, 0.72);
 }
 
 .tabs {
@@ -41,8 +41,8 @@
   gap: 2px;
   padding: 5px;
   border-radius: 999px;
-  background: rgba(255, 248, 238, 0.07);
-  border: 1px solid rgba(255, 248, 238, 0.1);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -53,7 +53,7 @@
   font-size: 0.82rem;
   font-weight: 600;
   white-space: nowrap;
-  color: rgba(255, 248, 238, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   transition:
     background-color 0.2s var(--ease),
     color 0.2s var(--ease);
@@ -66,7 +66,7 @@
 .tabs a.active {
   background: var(--red);
   color: var(--cream);
-  box-shadow: 0 6px 18px -8px rgba(184, 40, 31, 0.8);
+  box-shadow: 0 6px 18px -8px rgba(216, 32, 39, 0.8);
 }
 
 .user {
@@ -82,7 +82,7 @@
   margin-right: 6px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgba(255, 248, 238, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .site:hover {
@@ -105,14 +105,14 @@
 }
 
 .logout {
-  border: 1px solid rgba(255, 248, 238, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   background: transparent;
   color: var(--cream);
   transition: background-color 0.2s var(--ease);
 }
 
 .logout:hover {
-  background: rgba(255, 248, 238, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .content {

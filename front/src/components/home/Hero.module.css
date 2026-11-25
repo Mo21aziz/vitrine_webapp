@@ -1,19 +1,65 @@
+/* Full-width video hero: the video fills the whole section, text sits on top */
 .hero {
-  --side: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  min-height: min(100svh, 940px);
-  background: var(--red);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: min(100svh, 980px);
+  padding-top: 80px; /* white header */
+  background: #1c0f0b; /* shown for a split second before the video's first frame */
   color: var(--cream);
   overflow: hidden;
+}
+
+/* ---------- background ---------- */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  transform: scale(1.06);
+  animation: settle 2.6s var(--ease) both;
+}
+
+/* Light touch so the video stays the star: a soft dark-red veil only behind the text,
+   a neutral darkening at the bottom for the facts/bar, clear video everywhere else */
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(25, 10, 10, 0.58) 0%, rgba(40, 12, 12, 0.32) 30%, rgba(40, 12, 12, 0.06) 55%, transparent 70%),
+    linear-gradient(to top, rgba(12, 8, 6, 0.6) 0%, rgba(12, 8, 6, 0) 30%),
+    linear-gradient(to bottom, rgba(12, 8, 6, 0.3) 0%, rgba(12, 8, 6, 0) 18%);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  mix-blend-mode: soft-light;
+}
+
+/* ---------- content ---------- */
+.content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: 40px;
+  padding-block: clamp(48px, 8vh, 96px);
 }
 
 .copy {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 24px;
-  padding: 124px clamp(24px, 4vw, 64px) 72px var(--side);
+  max-width: 40rem;
 }
 
 .copy > * {
@@ -33,14 +79,36 @@
 }
 
 .eyebrow {
-  color: rgba(255, 248, 238, 0.85);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(7, 90, 44, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--basil);
+  box-shadow: 0 0 0 0 rgba(191, 236, 207, 0.7);
+  animation: pulse 2.4s ease-out infinite;
 }
 
 .title {
-  font-size: clamp(3rem, 5.6vw, 5.6rem);
+  font-size: clamp(3.2rem, 7vw, 7rem);
   font-weight: 350;
-  line-height: 0.98;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
   font-variation-settings: 'opsz' 144;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 6px 40px rgba(0, 0, 0, 0.35);
 }
 
 .title em {
@@ -50,9 +118,12 @@
 }
 
 .lead {
-  max-width: 34rem;
-  font-size: 1.05rem;
-  color: rgba(255, 248, 238, 0.86);
+  max-width: 33rem;
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.35),
+    0 2px 18px rgba(0, 0, 0, 0.35);
 }
 
 .actions {
@@ -67,7 +138,7 @@
   gap: clamp(20px, 3vw, 44px);
   margin: 8px 0 0;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 248, 238, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .facts div {
@@ -80,7 +151,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 248, 238, 0.7);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .facts dd {
@@ -90,66 +161,32 @@
   line-height: 1.1;
 }
 
-/* ---------- Image side ---------- */
-.media {
-  position: relative;
-  margin-top: 80px; /* height of the white header */
-  border-top-left-radius: var(--radius-xl);
-  overflow: hidden;
-  animation: reveal 1.2s var(--ease) both;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 40% 50%;
-  transform: scale(1.04);
-  animation: settle 2.4s var(--ease) both;
-}
-
-.shade {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to top, rgba(20, 42, 29, 0.55), transparent 30%),
-    linear-gradient(to right, rgba(20, 42, 29, 0.25), transparent 30%);
+/* right column: featured dish + rotating badge, floating over the video */
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  align-self: stretch;
+  padding-block: 12px;
 }
 
 .badge {
-  position: absolute;
-  right: clamp(20px, 5vw, 72px);
-  bottom: clamp(70px, 12vh, 130px);
+  margin-top: auto;
+  margin-right: clamp(0px, 3vw, 40px);
+  animation: rise 0.9s 0.5s var(--ease) both;
 }
 
-.caption {
-  position: absolute;
-  bottom: 22px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cream);
-}
-.captionLeft {
-  left: 28px;
-}
-.captionRight {
-  right: 28px;
-}
-
-/* Floating "pizza of the month" card — green glass */
+/* "pizza of the month" — green glass */
 .featured {
-  position: absolute;
-  left: 28px;
-  top: 28px;
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 14px 16px 14px 14px;
   border-radius: var(--radius);
-  background: rgba(31, 61, 43, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(15, 155, 77, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(14px);
   color: var(--cream);
   box-shadow: var(--shadow-card);
@@ -213,6 +250,45 @@
   font-weight: 800;
 }
 
+/* ---------- bottom bar ---------- */
+.bottomBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 24px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.playToggle {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(7, 90, 44, 0.35);
+  backdrop-filter: blur(8px);
+  color: var(--cream);
+  transition:
+    background-color 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.playToggle:hover {
+  background: var(--cream);
+  color: var(--red-deep);
+}
+
+.playToggle:active {
+  transform: scale(0.94);
+}
+
+/* ---------- motion ---------- */
 @keyframes rise {
   from {
     opacity: 0;
@@ -220,32 +296,48 @@
   }
 }
 
-@keyframes reveal {
-  from {
-    clip-path: inset(0 0 0 100%);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
 @keyframes settle {
   from {
-    transform: scale(1.14);
+    transform: scale(1.16);
   }
 }
 
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 9px rgba(191, 236, 207, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(191, 236, 207, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video,
+  .dot {
+    animation: none;
+  }
+}
+
+/* ---------- responsive ---------- */
 @media (max-width: 920px) {
-  .hero {
+  .content {
     grid-template-columns: 1fr;
-    min-height: 0;
+    align-items: end;
   }
-  .copy {
-    padding: 128px var(--gutter) 48px;
+  .side {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
   }
-  .media {
-    margin: 0 0 0 var(--gutter);
-    height: min(78vw, 520px);
+  .badge {
+    margin: 0;
+    transform: scale(0.8);
+  }
+  /* on narrow screens the text covers most of the video: darken from the bottom, keep the top clear */
+  .shade {
+    background:
+      linear-gradient(to top, rgba(20, 8, 8, 0.78) 0%, rgba(30, 10, 10, 0.48) 45%, rgba(30, 10, 10, 0.1) 75%, rgba(12, 8, 6, 0.25) 100%);
   }
 }
 
@@ -253,11 +345,10 @@
   .facts {
     justify-content: space-between;
   }
-  .badge {
-    bottom: 56px;
-    right: 16px;
+  .side .badge {
+    display: none;
   }
-  .captionLeft {
+  .bottomBar span:first-child {
     display: none;
   }
 }

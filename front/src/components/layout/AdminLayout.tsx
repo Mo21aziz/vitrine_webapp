@@ -21,7 +21,7 @@ export function AdminLayout() {
   return (
     <div className={`${styles.shell} texture`}>
       <header className={styles.topbar}>
-        <Logo to="/admin" tagline="Dashboard" />
+        <Logo to="/admin" tagline="Dashboard" size="sm" />
 
         <nav className={styles.tabs} aria-label="Navigation admin">
           {TABS.map((tab) => (

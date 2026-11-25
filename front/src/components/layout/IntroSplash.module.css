@@ -1,0 +1,74 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  transition:
+    clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1),
+    opacity 0.7s ease;
+  clip-path: inset(0 0 0 0);
+}
+
+/* the white page lifts like a curtain to reveal the site */
+.leave {
+  clip-path: inset(0 0 100% 0);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.logo {
+  width: min(360px, 70vw);
+  height: auto;
+  animation: draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.leave .logo {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition:
+    transform 0.5s ease,
+    opacity 0.4s ease;
+}
+
+.bar {
+  position: relative;
+  width: 120px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(15, 155, 77, 0.15);
+}
+
+.bar span {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--green) 0 33%, #e5e5e5 33% 66%, var(--red) 66%);
+  transform-origin: left;
+  animation: load 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes draw {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+@keyframes load {
+  from {
+    transform: scaleX(0);
+  }
+}

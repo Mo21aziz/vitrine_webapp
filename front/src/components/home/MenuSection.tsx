@@ -49,7 +49,9 @@ export function MenuSection({ menus, loading, error, onRetry }: MenuSectionProps
         {menus && menus.length > 0 && (
           <div className={styles.grid}>
             {menus.map((menu, i) => (
-              <MenuTile key={menu.id} menu={menu} index={i} />
+              <div key={menu.id} className={styles.cell} data-reveal style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}>
+                <MenuTile menu={menu} index={i} />
+              </div>
             ))}
           </div>
         )}

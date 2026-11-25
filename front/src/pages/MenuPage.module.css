@@ -44,14 +44,14 @@
   width: min(60%, 420px);
   height: 0.8em;
   border-radius: 12px;
-  background: rgba(255, 248, 238, 0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .lead {
   max-width: 36rem;
   margin-top: 18px;
   font-size: 1.1rem;
-  color: rgba(255, 248, 238, 0.85);
+  color: rgba(255, 255, 255, 0.85);
   animation: rise 0.8s 0.08s var(--ease) both;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .switcher a:hover {
-  background: rgba(31, 61, 43, 0.06);
+  background: rgba(15, 155, 77, 0.06);
 }
 
 .switcher a.activeTab {
@@ -131,7 +131,7 @@
 .skeleton {
   height: 260px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(100deg, rgba(31, 61, 43, 0.08) 40%, rgba(31, 61, 43, 0.16) 50%, rgba(31, 61, 43, 0.08) 60%);
+  background: linear-gradient(100deg, rgba(15, 155, 77, 0.08) 40%, rgba(15, 155, 77, 0.16) 50%, rgba(15, 155, 77, 0.08) 60%);
   background-size: 200% 100%;
   animation: shimmer 1.4s linear infinite;
 }
@@ -139,7 +139,7 @@
 .empty {
   padding: 32px;
   border-radius: var(--radius-lg);
-  border: 1px dashed rgba(31, 61, 43, 0.3);
+  border: 1px dashed rgba(15, 155, 77, 0.3);
 }
 
 @keyframes rise {
@@ -153,4 +153,9 @@
   to {
     background-position: -200% 0;
   }
+}
+
+/* reveal wrapper around each card: the card fills it */
+.cell {
+  display: grid;
 }

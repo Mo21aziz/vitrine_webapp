@@ -34,7 +34,7 @@
   width: 190px;
   height: 190px;
   border-radius: 50%;
-  border: 1px solid rgba(159, 211, 174, 0.2);
+  border: 1px solid rgba(191, 236, 207, 0.2);
 }
 
 .tile:hover {
@@ -60,7 +60,14 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: linear-gradient(180deg, rgba(20, 42, 29, 0.35) 0%, rgba(20, 42, 29, 0.55) 45%, rgba(20, 42, 29, 0.94) 100%);
+  /* a light green veil over the whole photo (brand colour), deeper at the bottom behind the text */
+  background: linear-gradient(
+    180deg,
+    rgba(7, 90, 44, 0.1) 0%,
+    rgba(7, 90, 44, 0.12) 45%,
+    rgba(7, 90, 44, 0.42) 75%,
+    rgba(7, 90, 44, 0.72) 100%
+  );
 }
 
 .withPhoto {
@@ -108,7 +115,7 @@
 .description {
   max-width: 28rem;
   font-size: 0.95rem;
-  color: rgba(255, 248, 238, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .footer {
@@ -117,7 +124,7 @@
   justify-content: space-between;
   margin-top: auto;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 248, 238, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;

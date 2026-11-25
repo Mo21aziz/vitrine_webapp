@@ -1,10 +1,11 @@
-import type { Admin, Article, ArticleDetail, AvisInput, AvisSummary, Menu, MenuDetail, PointDeVente, ReclamationInput } from '../types'
+import type { Admin, Article, ArticleDetail, AvisInput, AvisRecents, AvisSummary, Menu, MenuDetail, PointDeVente, ReclamationInput } from '../types'
 import { request } from './client'
 
 export const publicApi = {
   articles: () => request<Article[]>('/articles'),
   article: (id: number) => request<ArticleDetail>(`/articles/${id}`),
   avis: (articleId: number) => request<AvisSummary>(`/articles/${articleId}/avis`),
+  avisRecents: () => request<AvisRecents>('/avis/recents'),
   envoyerAvis: (articleId: number, data: AvisInput) =>
     request<{ id: number; createdAt: string }>(`/articles/${articleId}/avis`, { method: 'POST', body: data }),
   menus: () => request<Menu[]>('/menus'),

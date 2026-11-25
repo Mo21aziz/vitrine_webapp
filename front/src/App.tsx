@@ -1,5 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AdminLayout } from './components/layout/AdminLayout'
+import { IntroSplash } from './components/layout/IntroSplash'
+import { RevealOnScroll } from './components/layout/RevealOnScroll'
 import { RequireAuth } from './components/layout/RequireAuth'
 import { AuthProvider } from './context/AuthContext'
 import { ArticlesPage } from './pages/admin/ArticlesPage'
@@ -17,6 +19,8 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <IntroSplash />
+        <RevealOnScroll />
         <Routes>
           {/* Public site */}
           <Route path="/" element={<HomePage />} />

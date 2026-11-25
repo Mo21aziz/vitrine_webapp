@@ -22,6 +22,15 @@ export const avisService = {
     return { moyenne: round1(stats._avg.note), total: stats._count._all, avis };
   },
 
+  /** Public: best recent reviews for the home page */
+  async listRecent() {
+    const [avis, stats] = await Promise.all([
+      avisRepository.findRecentPublished(6),
+      avisRepository.allPublishedStats(),
+    ]);
+    return { moyenne: round1(stats._avg.note), total: stats._count._all, avis };
+  },
+
   async create(articleId: number, { nom, note, commentaire, site }: CreateAvisInput) {
     await ensureVisibleArticle(articleId);
     if (site) throw new HttpError(400, "Envoi refusé"); // honeypot filled → bot

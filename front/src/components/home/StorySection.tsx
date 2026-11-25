@@ -1,3 +1,4 @@
+import logoSrc from '../../assets/logo-dinapoli.png'
 import margherita from '../../assets/margherita.jpg'
 import styles from './StorySection.module.css'
 
@@ -11,12 +12,12 @@ export function StorySection() {
   return (
     <section id="histoire" className={`${styles.section} texture`}>
       <div className={`container ${styles.inner}`}>
-        <figure className={styles.figure}>
+        <figure className={styles.figure} data-reveal="zoom">
           <img src={margherita} alt="Margherita au basilic frais sur une pelle à pizza" loading="lazy" />
           <figcaption>La Margherita, comme à Naples.</figcaption>
         </figure>
 
-        <div className={styles.copy}>
+        <div className={styles.copy} data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
           <p className="eyebrow">La famiglia</p>
           <h2 className={styles.title}>
             Une recette, <em>une famille,</em> un four qui ne s’éteint jamais.
@@ -37,14 +38,12 @@ export function StorySection() {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container" data-reveal>
         <article className={styles.letter} aria-labelledby="lettre-titre">
           <header className={styles.letterHead}>
             <h3 id="lettre-titre" className={styles.wordmark}>
-              <span className={styles.wmDi}>Di</span> <span className={styles.wmNapoli}>Napoli</span>
-              <small className={styles.since}>Since 1987</small>
+              <img src={logoSrc} alt="Di Napoli — since 1987" width={1000} height={313} />
             </h3>
-            <span className={styles.tricolore} aria-hidden="true" />
           </header>
 
           <div className={styles.letterBody}>

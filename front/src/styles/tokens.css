@@ -4,25 +4,25 @@
  */
 :root {
   /* 60 — red */
-  --red: #b8281f;
-  --red-deep: #96201a;
-  --red-ink: #66150f;
+  --red: #d82027;
+  --red-deep: #b51a20;
+  --red-ink: #8a1318;
 
   /* 30 — green */
-  --green: #1f3d2b;
-  --green-2: #29503a;
-  --green-3: #3c6d4f;
-  --green-deep: #142a1d;
-  --basil: #9fd3ae;
+  --green: #0f9b4d;
+  --green-2: #0c8441;
+  --green-3: #0b7a3c;
+  --green-deep: #075a2c;
+  --basil: #bfeccf;
 
   /* 10 — white */
   --white: #ffffff;
-  --cream: #fff8ee;
-  --peach: #f7cfa6;
+  --cream: #ffffff;
+  --peach: #ffffff;
 
   --ink: #1c1a17;
   --muted: #6c6a64;
-  --line: rgba(31, 61, 43, 0.12);
+  --line: rgba(15, 155, 77, 0.12);
 
   --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -32,8 +32,8 @@
   --radius-lg: 28px;
   --radius-xl: 40px;
 
-  --shadow-card: 0 18px 50px -20px rgba(20, 42, 29, 0.45);
-  --shadow-soft: 0 8px 24px -12px rgba(20, 42, 29, 0.35);
+  --shadow-card: 0 18px 50px -20px rgba(7, 90, 44, 0.45);
+  --shadow-soft: 0 8px 24px -12px rgba(7, 90, 44, 0.35);
 
   --container: 1240px;
   --gutter: clamp(16px, 4vw, 48px);

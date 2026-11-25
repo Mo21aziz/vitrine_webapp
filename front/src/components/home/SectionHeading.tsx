@@ -12,7 +12,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ eyebrow, title, intro, align = 'split', tone = 'onColor' }: SectionHeadingProps) {
   return (
-    <div className={`${styles.heading} ${styles[align]} ${styles[tone]}`}>
+    <div className={`${styles.heading} ${styles[align]} ${styles[tone]}`} data-reveal>
       <div>
         <p className="eyebrow">{eyebrow}</p>
         <h2 className={styles.title}>{title}</h2>

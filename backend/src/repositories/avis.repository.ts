@@ -24,6 +24,31 @@ export const avisRepository = {
     });
   },
 
+  /** Latest published reviews across all dishes visible on the site (home page) */
+  findRecentPublished(limit: number) {
+    return prisma.avis.findMany({
+      where: { publie: true, article: { menuId: { not: null } } },
+      select: {
+        id: true,
+        nom: true,
+        note: true,
+        commentaire: true,
+        createdAt: true,
+        article: { select: { id: true, nom: true, imageUrl: true } },
+      },
+      orderBy: [{ note: "desc" }, { createdAt: "desc" }],
+      take: limit,
+    });
+  },
+
+  allPublishedStats() {
+    return prisma.avis.aggregate({
+      where: { publie: true, article: { menuId: { not: null } } },
+      _avg: { note: true },
+      _count: { _all: true },
+    });
+  },
+
   publishedStats(articleId: number) {
     return prisma.avis.aggregate({
       where: { articleId, publie: true },

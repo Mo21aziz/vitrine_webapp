@@ -85,6 +85,7 @@ export function PointsDeVentePage() {
                         <td>
                           <span className={styles.name}>{p.nom}</span>
                           <span className={styles.sub}>{p.adresse ?? 'Adresse non renseignée'}</span>
+                          {p.telephone && <span className={styles.sub}>☎ {p.telephone}</span>}
                         </td>
                         <td>
                           {hasCoords(p) ? (

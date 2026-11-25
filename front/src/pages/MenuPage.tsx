@@ -105,7 +105,9 @@ function MenuPageContent({ id }: { id: number }) {
             {data && data.articles.length > 0 && (
               <div className={styles.grid}>
                 {data.articles.map((article, i) => (
-                  <MenuCard key={article.id} article={article} index={i} />
+                  <div key={article.id} className={styles.cell} data-reveal style={{ "--reveal-delay": `${(i % 3) * 90}ms` } as React.CSSProperties}>
+                    <MenuCard article={article} index={i} />
+                  </div>
                 ))}
               </div>
             )}

@@ -144,7 +144,7 @@ function Detail({ article }: { article: ArticleDetail }) {
               Nos plats sont préparés à la commande. Signalez toute allergie ou intolérance à notre équipe : nous vous
               indiquerons ce qu’il est possible d’adapter.
             </p>
-            <a href="/#contact" className={styles.noteLink}>
+            <a href="/#reclamation" className={styles.noteLink}>
               Nous écrire <ArrowUpRight size={14} />
             </a>
           </aside>
@@ -185,7 +185,9 @@ function Detail({ article }: { article: ArticleDetail }) {
             </div>
             <div className={styles.moreGrid}>
               {article.autres.map((a, i) => (
-                <MenuCard key={a.id} article={a} index={i} />
+                <div key={a.id} className={styles.cell} data-reveal style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}>
+                  <MenuCard article={a} index={i} />
+                </div>
               ))}
             </div>
           </div>

@@ -18,12 +18,12 @@
 }
 
 .track {
-  stroke: rgba(255, 248, 238, 0.2);
+  stroke: rgba(255, 255, 255, 0.2);
 }
 
 .fill {
   stroke: var(--cream);
-  filter: drop-shadow(0 0 10px rgba(255, 248, 238, 0.45));
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.45));
   transition: stroke-dasharray 1s var(--ease);
   animation: draw 1.2s var(--ease) both;
 }

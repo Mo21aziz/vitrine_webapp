@@ -1,0 +1,205 @@
+.section {
+  padding-block: clamp(80px, 10vw, 130px);
+  background: var(--white);
+  color: var(--green);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 70px; /* below the fixed header when reached from the menu */
+}
+
+/* keeps the #avis anchor in place while reviews load */
+.placeholder {
+  min-height: 1px;
+  scroll-margin-top: 70px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.emptyText {
+  max-width: 32rem;
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.emptyLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 0.2s var(--ease);
+}
+
+.emptyLink:hover {
+  background: var(--green);
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.eyebrow {
+  color: var(--red);
+}
+
+.title {
+  margin-top: 10px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 350;
+  line-height: 1;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--red);
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.score strong {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 4.4rem);
+  font-weight: 350;
+  line-height: 1;
+}
+
+.scoreLabel {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid > li {
+  display: grid;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: #f4f6f5;
+  border: 1px solid var(--line);
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.4s var(--ease),
+    background-color 0.4s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+}
+
+.quote {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 350;
+  line-height: 1.45;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.who strong {
+  color: var(--ink);
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+
+.who time {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.dish {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 5px 10px 5px 5px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--green-3);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.dish img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dish:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}

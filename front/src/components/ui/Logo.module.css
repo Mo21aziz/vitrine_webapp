@@ -1,34 +1,65 @@
 .logo {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 12px;
   line-height: 1;
-  color: var(--cream);
+  color: var(--white);
 }
 
-.word {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  letter-spacing: -0.03em;
+.mark {
+  display: block;
+  transition: transform 0.3s var(--ease);
 }
 
-.di {
-  color: var(--basil);
+.logo:hover .mark {
+  transform: translateY(-1px) scale(1.02);
 }
 
-.dark {
-  color: var(--green);
+.mark img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.dark .di {
-  color: var(--red);
+/* sizes (width of the logo itself) */
+.sm .mark {
+  width: 120px;
+}
+.md .mark {
+  width: 150px;
+}
+.lg .mark {
+  width: 220px;
+}
+
+/* on coloured backgrounds the logo sits on a white card, like a printed menu */
+.light .mark {
+  padding: 7px 10px;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.45);
 }
 
 .tagline {
-  margin-top: 4px;
-  font-size: 0.56rem;
-  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.6rem;
+  font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  opacity: 0.85;
+}
+
+.dark .tagline {
+  border-color: var(--line);
+  color: var(--green);
+}
+
+@media (max-width: 480px) {
+  .md .mark {
+    width: 126px;
+  }
+  .lg .mark {
+    width: 180px;
+  }
 }

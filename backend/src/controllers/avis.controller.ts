@@ -3,6 +3,11 @@ import { avisService } from "../services/avis.service.js";
 import { avisQuerySchema, createAvisSchema, idParamSchema, updateAvisSchema } from "../types/schemas.js";
 
 export const avisController = {
+  // public — /avis/recents
+  async recent(_req: Request, res: Response) {
+    res.json(await avisService.listRecent());
+  },
+
   // public — /articles/:id/avis
   async listPublic(req: Request, res: Response) {
     const { id } = idParamSchema.parse(req.params);

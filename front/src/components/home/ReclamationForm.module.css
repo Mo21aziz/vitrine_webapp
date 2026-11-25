@@ -17,7 +17,7 @@
 .serverError {
   padding: 12px 14px;
   border-radius: var(--radius-sm);
-  background: rgba(184, 40, 31, 0.22);
+  background: rgba(216, 32, 39, 0.22);
   color: var(--peach);
   font-size: 0.9rem;
 }
@@ -36,7 +36,7 @@
 }
 
 .success p {
-  color: rgba(255, 248, 238, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .successIcon {

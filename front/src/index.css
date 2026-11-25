@@ -113,3 +113,26 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- reveal on scroll (see RevealOnScroll.tsx) ---------- */
+.can-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.can-reveal [data-reveal='fade'] {
+  transform: none;
+}
+
+.can-reveal [data-reveal='zoom'] {
+  transform: scale(0.94);
+}
+
+.can-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}

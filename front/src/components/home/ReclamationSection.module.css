@@ -1,0 +1,109 @@
+.section {
+  padding-block: clamp(80px, 11vw, 140px);
+  background: var(--white);
+  color: var(--green);
+  scroll-margin-top: 60px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(36px, 6vw, 80px);
+  align-items: start;
+}
+
+.copy {
+  position: sticky;
+  top: 110px;
+}
+
+.eyebrow {
+  color: var(--red);
+}
+
+.title {
+  margin-top: 12px;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 350;
+  line-height: 1;
+}
+
+.title em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.intro {
+  max-width: 30rem;
+  margin-top: 18px;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.stepNum {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(15, 155, 77, 0.1);
+  color: var(--green);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.note svg {
+  color: var(--green);
+}
+
+/* the form keeps its green card (fields are styled for a dark background) */
+.card {
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: var(--radius-xl);
+  background: var(--green);
+  color: var(--white);
+  box-shadow: var(--shadow-card);
+}
+
+.cardTitle {
+  margin-bottom: 26px;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 350;
+}
+
+@media (max-width: 920px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .copy {
+    position: static;
+  }
+}

@@ -44,19 +44,19 @@ select.control {
 
 /* On green surfaces (public form) */
 .dark .label {
-  color: rgba(255, 248, 238, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 .dark .control {
-  background: rgba(255, 248, 238, 0.08);
-  border-color: rgba(255, 248, 238, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
   color: var(--cream);
 }
 .dark .control::placeholder {
-  color: rgba(255, 248, 238, 0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 .dark .control:focus {
   border-color: var(--basil);
-  background: rgba(255, 248, 238, 0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 .dark select.control option {
   color: var(--ink);
@@ -65,7 +65,7 @@ select.control {
   color: var(--peach);
 }
 .dark .hint {
-  color: rgba(255, 248, 238, 0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* On white surfaces (dashboard) */
@@ -73,14 +73,14 @@ select.control {
   color: var(--muted);
 }
 .light .control {
-  background: #f6f3ee;
-  border-color: #e9e3da;
+  background: #f4f6f5;
+  border-color: #e3e8e5;
   color: var(--ink);
 }
 .light .control:focus {
   border-color: var(--green-3);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(60, 109, 79, 0.12);
+  box-shadow: 0 0 0 4px rgba(11, 122, 60, 0.12);
 }
 .light .error {
   color: var(--red-deep);

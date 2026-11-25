@@ -49,6 +49,22 @@ export const pointDeVenteSchema = z
       .transform((v) => (v ? v : null)),
     latitude: z.number().min(-90).max(90).nullable().default(null),
     longitude: z.number().min(-180).max(180).nullable().default(null),
+    // e.g. "Di Napoli Manzah 5, Rue Mustapha Abdessalem, Ariana 2091" — searched in Google Maps
+    googleMapsQuery: z
+      .string()
+      .trim()
+      .max(191)
+      .optional()
+      .nullable()
+      .transform((v) => (v ? v : null)),
+    telephone: z
+      .string()
+      .trim()
+      .max(32)
+      .regex(/^[+0-9 ()./-]*$/, "Numéro de téléphone invalide")
+      .optional()
+      .nullable()
+      .transform((v) => (v ? v : null)),
   })
   .refine((p) => (p.latitude === null) === (p.longitude === null), {
     message: "Latitude et longitude vont ensemble",

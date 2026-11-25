@@ -1,0 +1,50 @@
+.bar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .bar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    z-index: 50;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.45);
+    transform: translateY(140%);
+    transition: transform 0.45s var(--ease);
+  }
+
+  .visible {
+    transform: none;
+  }
+
+  .bar a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 46px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .menu {
+    background: var(--green);
+    color: var(--white);
+  }
+
+  .go {
+    background: var(--red);
+    color: var(--white);
+  }
+}

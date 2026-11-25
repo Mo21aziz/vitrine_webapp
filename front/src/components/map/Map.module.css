@@ -3,7 +3,7 @@
   isolation: isolate; /* keep Leaflet's z-indexes (up to 1000) inside the map */
   overflow: hidden;
   border-radius: var(--radius-lg);
-  background: #efe7da;
+  background: #eef1ef;
   box-shadow: var(--shadow-card);
 }
 
@@ -12,7 +12,7 @@
   height: 100%;
   min-height: 300px;
   font-family: var(--font-body);
-  background: #efe7da;
+  background: #eef1ef;
 }
 
 /* warm the default OSM colours so the map sits in the Di Napoli palette */
@@ -45,7 +45,7 @@
 
 .map :global(.leaflet-control-attribution) {
   border-top-left-radius: 10px;
-  background: rgba(255, 248, 238, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   font-size: 10px;
   color: var(--muted);
 }

@@ -39,12 +39,14 @@ model Menu {
 }
 
 model PointDeVente {
-  id           Int           @id @default(autoincrement())
-  nom          String        @unique
-  adresse      String?
-  latitude     Float? // picked on the map in the admin
-  longitude    Float?
-  reclamations Reclamation[]
+  id              Int           @id @default(autoincrement())
+  nom             String        @unique
+  adresse         String?
+  latitude        Float? // picked on the map in the admin
+  longitude       Float?
+  googleMapsQuery String? // text searched in Google Maps by the Itinéraire button
+  telephone       String?       @db.VarChar(32) // shown on the site, tap to call
+  reclamations    Reclamation[]
 }
 
 enum StatutReclamation {

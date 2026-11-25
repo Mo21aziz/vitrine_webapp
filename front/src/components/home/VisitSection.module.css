@@ -5,20 +5,19 @@
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(36px, 6vw, 80px);
-  align-items: start;
+  display: block;
 }
 
 .locations {
   scroll-margin-top: 100px;
 }
 
+/* restaurants spread over the full width, 2 per row on large screens */
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+  align-items: start; /* opening one card’s map doesn’t stretch its neighbour */
+  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -109,7 +108,7 @@
   font-weight: 600;
   color: var(--green-3);
   text-decoration: underline;
-  text-decoration-color: rgba(60, 109, 79, 0.35);
+  text-decoration-color: rgba(11, 122, 60, 0.35);
   text-underline-offset: 4px;
   transition:
     color 0.2s var(--ease),
@@ -143,7 +142,7 @@
   height: 46px;
   border: none;
   border-radius: 50%;
-  background: rgba(184, 40, 31, 0.1);
+  background: rgba(216, 32, 39, 0.1);
   color: var(--red);
   transition:
     background-color 0.2s var(--ease),
@@ -172,7 +171,7 @@
 .mapFallback {
   height: clamp(260px, 32vw, 340px);
   border-radius: var(--radius-lg);
-  background: rgba(255, 248, 238, 0.14);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .placeholder {
@@ -180,32 +179,140 @@
   opacity: 0.7;
 }
 
-/* Contact card — green on red */
-.card {
-  scroll-margin-top: 100px;
-  padding: clamp(28px, 4vw, 48px);
-  border-radius: var(--radius-xl);
+
+
+/* ---------- "all restaurants" toolbar + map ---------- */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-bottom: 16px;
+}
+
+.toolBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 22px;
+  border: none;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--green);
+  font-size: 0.85rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-soft);
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+.toolBtn svg {
+  color: var(--red);
+  transition: color 0.25s var(--ease);
+}
+
+.toolBtn:hover {
+  transform: translateY(-2px);
+}
+
+.toolBtnActive,
+.toolBtnActive:hover {
   background: var(--green);
-  box-shadow: var(--shadow-card);
+  color: var(--white);
 }
 
-.card :global(.eyebrow) {
-  color: var(--basil);
+.toolBtnActive svg {
+  color: var(--white);
 }
 
-.cardTitle {
+.toolLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: border-color 0.2s var(--ease);
+}
+
+.toolLink:hover {
+  border-color: var(--white);
+}
+
+.allMap {
+  margin-bottom: 18px;
+}
+
+.mapError {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 120px;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---------- tap-to-call phone chip ---------- */
+.phone {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
   margin-top: 12px;
-  font-size: clamp(2rem, 3.4vw, 2.8rem);
-  font-weight: 350;
+  padding: 5px 16px 5px 5px;
+  border-radius: 999px;
+  background: rgba(15, 155, 77, 0.08);
+  color: var(--green-deep);
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease);
 }
 
-.cardIntro {
-  margin: 14px 0 28px;
-  color: rgba(255, 248, 238, 0.75);
+.phoneIcon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  box-shadow: 0 4px 10px rgba(15, 155, 77, 0.35);
+  transition: background-color 0.25s var(--ease);
 }
 
-@media (max-width: 920px) {
-  .inner {
-    grid-template-columns: 1fr;
-  }
+.phone:hover {
+  background: var(--green);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.phone:hover .phoneIcon {
+  background: var(--white);
+  color: var(--green);
+  animation: ring 0.6s var(--ease);
+}
+
+@keyframes ring {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-14deg); }
+  40% { transform: rotate(12deg); }
+  60% { transform: rotate(-8deg); }
+  80% { transform: rotate(5deg); }
 }

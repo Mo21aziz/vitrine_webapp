@@ -11,7 +11,7 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   column-gap: 12px;
-  border-bottom: 1px solid #ece5da;
+  border-bottom: 1px solid #e9edeb;
 }
 
 .item:last-child {
@@ -32,7 +32,7 @@
 }
 
 .summary:hover {
-  background: rgba(31, 61, 43, 0.04);
+  background: rgba(15, 155, 77, 0.04);
 }
 
 .avatar {
@@ -89,7 +89,7 @@
 }
 
 .NOUVELLE {
-  background: rgba(184, 40, 31, 0.12);
+  background: rgba(216, 32, 39, 0.12);
   color: var(--red-deep);
 }
 
@@ -99,7 +99,7 @@
 }
 
 .TRAITEE {
-  background: rgba(60, 109, 79, 0.14);
+  background: rgba(11, 122, 60, 0.14);
   color: var(--green-2);
 }
 
@@ -111,7 +111,7 @@
   margin: 0 6px 16px 56px;
   padding: 16px 18px;
   border-radius: var(--radius);
-  background: #f4efe7;
+  background: #f2f4f3;
   animation: open 0.3s var(--ease);
 }
 

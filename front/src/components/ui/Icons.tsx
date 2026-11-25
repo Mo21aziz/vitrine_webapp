@@ -43,6 +43,12 @@ export const Flame = (p: IconProps) => (
   </svg>
 )
 
+export const Phone = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2Z" />
+  </svg>
+)
+
 export const Pin = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" />
@@ -77,5 +83,25 @@ export const Pencil = (p: IconProps) => (
 export const Plus = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="M12 5v14M5 12h14" />
+  </svg>
+)
+
+export const Instagram = (p: IconProps) => (
+  <svg {...base(p)}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+  </svg>
+)
+
+export const Facebook = (p: IconProps) => (
+  <svg {...base(p)} fill="currentColor" stroke="none">
+    <path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1Z" />
+  </svg>
+)
+
+export const TikTok = (p: IconProps) => (
+  <svg {...base(p)} fill="currentColor" stroke="none">
+    <path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v3.1a7.4 7.4 0 0 1-3.8-1.2v6.1c0 3.5-2.4 6.2-6 6.2a5.9 5.9 0 0 1-5.9-6c0-3.6 3-6.3 6.8-5.8v3.2c-1.8-.4-3.6.7-3.6 2.6 0 1.6 1.2 2.8 2.8 2.8 1.7 0 2.8-1.2 2.8-3.1V3h3Z" />
   </svg>
 )
